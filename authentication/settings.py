@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import django_heroku
+import dj_database_url
+from decouple import config
 from django.contrib import auth
 from django.forms.widgets import Media
 
@@ -138,6 +140,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 AUTH_USER_MODEL='authapp.user'
 MEDIA_URL='/media/'
 MEDIA_ROOT =os.path.join(BASE_DIR,'media')
+django_heroku.settings(locals())
