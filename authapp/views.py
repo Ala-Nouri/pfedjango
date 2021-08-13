@@ -116,6 +116,7 @@ def create_event (request):
            obj.user=request.user
            obj.status='pending...'
            obj.save()
+           EventRegistration.objects.create(event=obj,user=request.user)
            return redirect(index)
 
 
