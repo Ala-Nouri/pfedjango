@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import about, club_update,  clubs, contact, create_event, event, event_update, index, my_club, my_events, participant, signin, signout, signup
+from .views import about, club_update,  clubs, contact, create_club, create_event, event, event_update, index, my_club, my_events, participant, signin, signout, signup
 
 
 
@@ -20,5 +20,6 @@ urlpatterns = [
     path('myclub/<id>', my_club, name='my club'),
     path('clubupdate/<id>' ,club_update,name="club_update"),
     path('eventupdate/<id>' ,event_update,name="event_update"),
+    path('creatclub/' ,create_club,name="create club"),
 
 ]

@@ -11,6 +11,7 @@ from .forms import EventRegistrationform, LoginForm,RegistrationForm, clubform,e
 
 def signin(request):
     forms = LoginForm()
+    error=False
     if request.method == 'POST':
         forms = LoginForm(request.POST)
         if forms.is_valid():
@@ -20,8 +21,11 @@ def signin(request):
             if user:
                 login(request, user)
                 return redirect('home')
-    context = {
-        'form': forms
+            else:
+                error=True
+        
+    context = {'form': forms,
+        'error':error
     }
     return render(request, 'signin.html', context)
 
@@ -135,8 +139,12 @@ def clubs(request):
 
 
 def my_club(request,id):
-    data=club.objects.get(chef_id=id)
-    return render(request,'my_club.html',{'data' : data})
+    own=club.objects.filter(chef_id=id).count
+    if own() < 1:
+     return redirect('create club')
+    else:
+     data=club.objects.get(chef_id=id)
+     return render(request,'my_club.html',{'data' : data})
     
 def club_update(request,id):
     cl=club.objects.get(id=id)
@@ -163,3 +171,14 @@ def event_update(request,id):
     context={'form':form,
               'data':cl}
     return render(request,'update_event.html',context)
+
+def create_club(request):
+    postdata=request.POST
+    postfile=request.FILES
+    form=clubform(postdata,postfile)
+    if form.is_valid():
+        obj=form.save(commit=False)
+        obj.chef=request.user
+        obj.save()
+        return redirect('index')
+    return render(request,'create_club.html',{'form':form})

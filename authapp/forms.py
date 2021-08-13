@@ -26,7 +26,11 @@ class eventcform(ModelForm):
         exclude=('user','status','feedback')
         fields=[ 'title','date','description','place','poster']  
         widgets = {
+        'title' :forms.TextInput(attrs={'class':'form-control'}),
+        'description':forms.Textarea(attrs={'class':'form-control'}),
+        'place':forms.TextInput(attrs={'class':'form-control'}),
         'date': forms.DateInput(format=('%Y-%m-%d'), attrs={'placeholder':'Select a date', 'type':'date'}),
+        'poster':forms.FileInput(attrs={})
     }
    
 class EventRegistrationform(ModelForm):

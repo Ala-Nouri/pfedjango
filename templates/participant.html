@@ -29,7 +29,7 @@
     <div class="navbar-collapse" id="navbar-collapse">
       <div class="site-header hidden-xs">
           <a class="site-brand" href="{% url 'index' %}" title="">
-            <img class="img-responsive site-logo" alt="" src="{% static './images/issat.jpg'%}">
+            <img class="img-responsive site-logo" alt="" src="{% static './images/issat.png'%}">
             
           </a>
     
@@ -72,18 +72,18 @@
 </div>
  <div class="hero-full-wrapper">
   
- <table style="width:100%" >
+ <table id="example">
  <tr>
-    <td><center><h6> Name</h6></center></td>
-    <td><center><h6> Email</h6</center>></td>
+    <th> Name</th>
+    <th> Email</th>
     
-    
+  </tr>
   
   {%for eventc in events%}
 
  <tr>
-    <td> <center>{{eventc.user.first_name}} {{eventc.user.last_name}}</center></td>
-    <td> <center>{{eventc.user.email}}</center></td>
+    <td> {{eventc.user.first_name}} {{eventc.user.last_name}}</td>
+    <td> {{eventc.user.email}}</td>
     
     
   </tr>

@@ -7,7 +7,7 @@
 
 
 
-  <title>Create event</title>  
+  <title>Create club</title>  
 
 <link href="{% static './css/main.82cfd66e.css'%}" rel="stylesheet"></head>
 
@@ -63,46 +63,28 @@
 <main class=""required name="main-collapse">
 
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="section-container-spacer">
-      <h1>Create your event</h1>
-    </div>
-    <div class="section-container-spacer">
-       <form action="" class="reveal-content" method="POST" enctype="multipart/form-data">
+<form action="" class="reveal-content" method="POST" enctype="multipart/form-data">
        {% csrf_token %}
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-              <h5 class=""> Title</h5> 
-                {{ form.title }}
+              <h5 class=""> Name</h5> 
+                {{ form.name }}
 
               </div>
               <div class="form-group">
-              <h5 class=""> description</h5>
-              {{ form.description }}
+              <h5 class="">About</h5>
+              {{ form.about }}
               </div>
               <div class="form-group">
-               <h5 class=""> place</h5>
-              {{ form.place }}
-              </div>
-              <div class="form-group">
-               <h5 class=""> date</h5> 
-                {{ form.date }}
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <h5 class=""> poster</h5>
-                {{ form.poster }}
+                <h5 class=""> Image</h5>
+                
+                {{ form.image }}
               </div>
               
                 
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <button type="submit" class="btn btn-primary btn-lg">Update</button>
         </form>
-    </div>
-  </div>
-</div>
 
 
 </main>
@@ -113,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   navActivePage();
 });
 </script>
+
 
 <script type="text/javascript" src="{% static './js/main.85741bff.js'%}"></script></body>
 
