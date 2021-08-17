@@ -105,6 +105,7 @@ def event (request,id):
 
 
 
+@login_required(login_url='signin')
 def create_event (request): 
    form= eventcform ()
    if request.method =='POST' :
@@ -162,7 +163,7 @@ def event_update(request,id):
     cl=eventc.objects.get(id=id)
     form=eventcform(request.POST or None,request.FILES or None,instance=cl)
     if form.is_valid():
-         obj=form.save(commit=False)
+         obj=form.save(commit=True)
          obj.status='pending...'
          obj.feedback=''
          obj.save()
